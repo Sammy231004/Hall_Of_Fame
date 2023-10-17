@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  hall-of-fame:
+    image: hall-of-fame:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7500:7500"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    depends_on:
+      - postgres
+    networks:
+      - default
+    command: ["./wait-for-it.sh", "postgres:5432", "--", "dotnet", "Hall Of Fame.dll"]
+
+  postgres:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    networks:
+      - default
+
+networks:
+  default:

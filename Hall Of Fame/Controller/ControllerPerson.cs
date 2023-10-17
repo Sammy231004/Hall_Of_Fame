@@ -18,7 +18,8 @@ namespace Hall_Of_Fame.ControllerAPI
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetPeople() => await _personService.GetPeople();
+        // изменено с ActionResult в IActionResult
+        public async Task<IActionResult> GetPeople() => await _personService.GetPeople();
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPersonById(long id) => await _personService.GetPersonById(id);

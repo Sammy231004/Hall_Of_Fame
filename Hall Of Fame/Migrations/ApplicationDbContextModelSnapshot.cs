@@ -15,7 +15,7 @@ namespace Hall_Of_Fame.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("public")
+                .HasDefaultSchema("qwe")
                 .HasAnnotation("ProductVersion", "7.0.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
@@ -39,7 +39,7 @@ namespace Hall_Of_Fame.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Persons", "public");
+                    b.ToTable("Persons", "qwe");
                 });
 
             modelBuilder.Entity("Hall_Of_Fame.Entities.Skills", b =>
@@ -64,7 +64,7 @@ namespace Hall_Of_Fame.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("Skills", "public");
+                    b.ToTable("Skills", "qwe");
                 });
 
             modelBuilder.Entity("Hall_Of_Fame.Entities.Skills", b =>

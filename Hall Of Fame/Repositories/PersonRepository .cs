@@ -61,7 +61,6 @@ namespace Hall_Of_Fame.Repositories
                 {
                     existingPerson.Skills.Clear();
                 }
-
                 existingPerson.Skills = personRequest.Skills.Select(skill => new Skills
                 {
                     Name = skill.Name,

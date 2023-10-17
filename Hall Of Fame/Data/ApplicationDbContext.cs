@@ -16,7 +16,7 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("public");
+        modelBuilder.HasDefaultSchema("qwe");
         modelBuilder.Entity<Person>()
             .HasMany(p => p.Skills)
             .WithOne()
