@@ -8,8 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Serilog.Events;
 using System.Net;
 
-// Создаёт папку 'logs' (если её нет)
-System.IO.Directory.CreateDirectory("logs");
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -26,7 +25,7 @@ builder.WebHost.ConfigureKestrel(options =>
 Log.Logger = new LoggerConfiguration()
     .WriteTo.File(
         new RenderedCompactJsonFormatter(),
-        $"logs/log-{DateTime.Now:yyyy-MM}.txt",
+        $"log-{DateTime.Now:yyyy-MM}.txt",
         LogEventLevel.Information,
         rollingInterval: RollingInterval.Month)
     .CreateLogger();
@@ -40,8 +39,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 //удалена строчка подключения из файла Program.cs, теперь продключение в appsettings.json
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connectionString, o => o.MigrationsHistoryTable("__EFMigrationsHistory", "qwe"))
+    options.UseNpgsql(connectionString, o => o.MigrationsHistoryTable("__EFMigrationsHistory", "Hall_Of_Fame"))
 );
+
 
 //добавлена автомиграция 
 using (var scope = builder.Services.BuildServiceProvider().CreateScope())

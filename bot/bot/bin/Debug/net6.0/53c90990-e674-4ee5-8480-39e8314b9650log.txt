@@ -1,0 +1,24 @@
+bot Error: 0 : Error during authentication for user 663591173: Telegram.Bot.Types.Message
+bot Information: 0 : Authenticating user 663591173 with login савиных162
+bot Information: 0 : Authentication successful for user 663591173
+bot Error: 0 : Error during authentication for user 663591173: Telegram.Bot.Types.Message
+bot Information: 0 : Authenticating user 663591173 with login савиных162
+bot Information: 0 : Authentication successful for user 663591173
+bot Error: 0 : Error during authentication for user 663591173: Telegram.Bot.Types.Message
+bot Information: 0 : Authenticating user 663591173 with login савиных162
+bot Information: 0 : Authentication successful for user 663591173
+bot Error: 0 : Error during authentication for user 663591173: Telegram.Bot.Types.Message
+bot Information: 0 : Authenticating user 663591173 with login савиных162
+bot Information: 0 : Authentication successful for user 663591173
+bot Error: 0 : Error during authentication for user 663591173: Telegram.Bot.Types.Message
+bot Information: 0 : Authenticating user 663591173 with login савиных162
+bot Information: 0 : Authentication successful for user 663591173
+bot Error: 0 : Error during authentication for user 663591173: Telegram.Bot.Types.Message
+bot Information: 0 : Authenticating user 663591173 with login савиных162
+bot Information: 0 : Authentication successful for user 663591173
+bot Error: 0 : Error during authentication for user 663591173: Telegram.Bot.Types.Message
+bot Information: 0 : Authenticating user 663591173 with login савиных162
+bot Information: 0 : Authentication successful for user 663591173
+bot Error: 0 : Error during authentication for user 663591173: Telegram.Bot.Types.Message
+bot Information: 0 : Authenticating user 663591173 with login савиных162
+bot Information: 0 : Authentication failed for user 663591173: Status Code Unauthorized

@@ -45,7 +45,7 @@ namespace Hall_Of_Fame.Repositories
             return await _context.Persons.Include(p => p.Skills).SingleOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<Person> UpdatePerson(long id, PersonRequest personRequest)
+        public async Task<Person> UpdatePerson(long id, UpdatePersonRequestDto personRequest)
         {
             var existingPerson = await _context.Persons.SingleOrDefaultAsync(p => p.Id == id);
             if (existingPerson != null)
