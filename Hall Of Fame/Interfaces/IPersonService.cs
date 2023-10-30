@@ -10,7 +10,7 @@ namespace Hall_Of_Fame.Interface
         Task<IEnumerable<PersonResponseDto>> GetPeople();
         Task<PersonResponseDto> GetPersonById(long id);
         Task<PersonResponseDto> CreatePerson(CreatePersonRequestDto request);
-        Task<PersonResponseDto> UpdatePerson(long id, UpdatePersonRequestDto personRequest);
+        Task<PersonResponseDto> UpdatePerson(long id, UpdatePersonRequestDto request);
         Task DeletePersonById(long id);
     }
 }

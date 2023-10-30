@@ -1,4 +1,5 @@
-﻿using Hall_Of_Fame.Entities;
+﻿using EntityConfigurations;
+using Hall_Of_Fame.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System.Collections.Generic;
@@ -16,11 +17,16 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("qwe");
+        modelBuilder.HasDefaultSchema("Hall_Of_Fame");
+
+        modelBuilder.ApplyConfiguration(new PersonEntityTypeConfiguration()); 
+
         modelBuilder.Entity<Person>()
             .HasMany(p => p.Skills)
             .WithOne()
             .HasForeignKey(s => s.PersonId);
     }
+
+
 }
 

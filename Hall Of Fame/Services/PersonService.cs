@@ -32,7 +32,7 @@ namespace Hall_Of_Fame.Services
             var createdPerson = await _personRepository.CreatePerson(person);
             return new PersonResponseDto
             {
-                Id = createdPerson.Id, 
+            
                 Name = createdPerson.Name,
                 DisplayName = createdPerson.DisplayName,
                 Skills = createdPerson.Skills.Select(x => new SkillResponseDto { Name = x.Name, Level = x.Level }).ToList(),
@@ -52,6 +52,7 @@ namespace Hall_Of_Fame.Services
 
             return new PersonResponseDto
             {
+                Id = person.Id,
                 Name = person.Name,
                 DisplayName = person.DisplayName,
                 Skills = person.Skills.Select(skill => new SkillResponseDto { Name = skill.Name, Level = skill.Level }).ToList()
@@ -77,11 +78,20 @@ namespace Hall_Of_Fame.Services
 
         public async Task<PersonResponseDto> UpdatePerson(long id, UpdatePersonRequestDto personRequest)
         {
-            var updatedPerson = await _personRepository.UpdatePerson(id, personRequest);
-            if (updatedPerson == null)
+            var existingPerson = await _personRepository.GetPersonById(id);
+
+            if (existingPerson == null)
             {
                 return null;
             }
+
+            existingPerson.Name = personRequest.Name;
+            existingPerson.DisplayName = personRequest.DisplayName;
+
+           
+            existingPerson.Skills = personRequest.Skills.Select(x => new Skills { Name = x.Name, Level = x.Level }).ToList();
+
+            var updatedPerson = await _personRepository.UpdatePerson(id, existingPerson);
 
             return new PersonResponseDto
             {

@@ -28,11 +28,8 @@ namespace Hall_Of_Fame.Repositories
         public async Task DeletePersonById(long id)
         {
             var person = await _context.Persons.SingleOrDefaultAsync(p => p.Id == id);
-            if (person != null)
-            {
-                _context.Remove(person);
-                await _context.SaveChangesAsync();
-            }
+            _context.Remove(person);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<Person>> GetPeople()
@@ -45,34 +42,12 @@ namespace Hall_Of_Fame.Repositories
             return await _context.Persons.Include(p => p.Skills).SingleOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<Person> UpdatePerson(long id, UpdatePersonRequestDto personRequest)
+        public async Task<Person> UpdatePerson(long id, Person person)
         {
-            var existingPerson = await _context.Persons.SingleOrDefaultAsync(p => p.Id == id);
-            if (existingPerson != null)
-            {
-                existingPerson.Name = personRequest.Name;
-                existingPerson.DisplayName = personRequest.DisplayName;
 
-                if (existingPerson.Skills == null)
-                {
-                    existingPerson.Skills = new List<Skills>();
-                }
-                else
-                {
-                    existingPerson.Skills.Clear();
-                }
-                existingPerson.Skills = personRequest.Skills.Select(skill => new Skills
-                {
-                    Name = skill.Name,
-                    Level = skill.Level
-                }).ToList();
-
-                _context.Update(existingPerson);
-                await _context.SaveChangesAsync();
-
-                return existingPerson;
-            }
-            return null;
+            await _context.SaveChangesAsync();
+            return person;
         }
+
     }
 }

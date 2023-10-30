@@ -5,7 +5,7 @@ public interface IPersonRepository
 {
     Task<List<Person>> GetPeople();
     Task<Person> GetPersonById(long id);
-    Task<Person> UpdatePerson(long id, UpdatePersonRequestDto personRequest);
+    Task<Person> UpdatePerson(long id, Person  person);
     Task<Person> CreatePerson(Person person);
     Task DeletePersonById(long id);
 }

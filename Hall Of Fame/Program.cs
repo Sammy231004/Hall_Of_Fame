@@ -7,6 +7,8 @@ using Hall_Of_Fame.Services;
 using Microsoft.EntityFrameworkCore;
 using Serilog.Events;
 using System.Net;
+using Hall_Of_Fame.Controllers.V1;
+using Microsoft.AspNetCore.Mvc;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,12 +18,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IPersonService, PersonService>();
 builder.Services.AddTransient<IPersonRepository, PersonRepository>();
-
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(80);
 });
-//добавлено логирование в папку logs по дням 
+
+builder.Services.AddApiVersioning(config =>
+{
+    config.DefaultApiVersion = new ApiVersion(1, 0);
+    config.AssumeDefaultVersionWhenUnspecified = true;
+});
+
 Log.Logger = new LoggerConfiguration()
     .WriteTo.File(
         new RenderedCompactJsonFormatter(),

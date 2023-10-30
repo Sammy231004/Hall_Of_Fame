@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Hall_Of_Fame.DTO
@@ -11,6 +12,6 @@ namespace Hall_Of_Fame.DTO
         [Required(ErrorMessage = "Введите ваше отображаемое имя")]
         public string DisplayName { get; set; }
 
-        public List<SkillRequestDto> Skills { get; set; }
+        public ICollection<SkillRequestDto> Skills { get; set; }
     }
 }

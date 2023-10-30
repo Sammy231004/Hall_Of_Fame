@@ -8,6 +8,6 @@ namespace Hall_Of_Fame.DTO
         public long Id { get; set; }
         public string Name { get; set; }
         public string DisplayName { get; set; }
-        public ICollection<SkillResponseDto> Skills { get; set; }
+        public List<SkillResponseDto> Skills { get; set; }
     }
 }
