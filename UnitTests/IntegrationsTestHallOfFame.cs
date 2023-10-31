@@ -11,10 +11,10 @@ using Xunit;
 namespace IntegrationsTestHallOfFame
 {
 
-    public class PersonControllerIntegrationTests : IClassFixture<WebApplicationFactory<Program>>
+    public class PersonControllerIntegrationTests : IClassFixture<CustomWebApplicationFactory<Program>>
  
 	{
-		private readonly WebApplicationFactory<Program> _factory;           
+		private readonly CustomWebApplicationFactory<Program> _factory;           
 		private readonly HttpClient _client;
 
         // сохраняет в бд     
@@ -34,24 +34,10 @@ namespace IntegrationsTestHallOfFame
                 _client = _factory.CreateClient();
 
             }*/
-        public PersonControllerIntegrationTests(WebApplicationFactory<Program> factory)
+        public PersonControllerIntegrationTests(CustomWebApplicationFactory<Program> factory)
         {
-            _factory = factory.WithWebHostBuilder(builder =>
-            {
-                builder.ConfigureServices(services =>
-                {
-                    services.AddEntityFrameworkInMemoryDatabase();
-                    var provider = services.AddEntityFrameworkInMemoryDatabase().BuildServiceProvider();
-
-                    services.AddDbContext<ApplicationDbContext>(options =>
-                    {
-                        options.UseInMemoryDatabase("Identity");
-                        options.UseInternalServiceProvider(provider);
-                    });
-                });
-            });
-
-            _client = _factory.CreateClient();
+	        _factory = factory;
+	        _client = _factory.CreateClient();
         }
 
 
