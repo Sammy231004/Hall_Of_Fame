@@ -49,23 +49,26 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString, o => o.MigrationsHistoryTable("__EFMigrationsHistory", "Hall_Of_Fame"))
 );
 
-using (var scope = builder.Services.BuildServiceProvider().CreateScope())
+if (builder.Environment.EnvironmentName != "Test")
 {
-    try
+    using (var scope = builder.Services.BuildServiceProvider().CreateScope())
     {
-        var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        try
+        {
+            var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-        dbContext.Database.Migrate();
-    }
-    catch (Npgsql.PostgresException ex)
-    {
-
-        if (ex.SqlState != "42P07")
+            dbContext.Database.Migrate();
+        }
+        catch (Npgsql.PostgresException ex)
         {
 
+            if (ex.SqlState != "42P07")
+            {
+
+
+            }
 
         }
-        
     }
 }
 
