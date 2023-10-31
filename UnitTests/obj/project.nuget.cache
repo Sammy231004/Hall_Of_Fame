@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ESkB6k8szOWvjIP6swg0JKmE4lYhPCe+fQGG/7tFlUgBfrXd8TDGlyIq30o4emaGl2HWqTh9v/mPTH2tNAZCsA==",
+  "dgSpecHash": "YCxZa1QZAw7f+vP9EfVdq3R4CbDCAGvGoS8NayV8qwyjIl98Hn38bN7ewU7FQAAb+hK6CyU2ZQIX05nRznaOoA==",
   "success": true,
-  "projectFilePath": "D:\\Hall_Of_Fame-main\\UnitTests\\Tests.csproj",
+  "projectFilePath": "D:\\Hall_Of_Fame-main\\UnitTests\\Hall_of_fame.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SavinykhVN\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\SavinykhVN\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",

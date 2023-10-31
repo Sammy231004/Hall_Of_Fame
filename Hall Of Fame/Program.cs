@@ -44,13 +44,11 @@ builder.Services.AddLogging();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-//удалена строчка подключения из файла Program.cs, теперь продключение в appsettings.json
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString, o => o.MigrationsHistoryTable("__EFMigrationsHistory", "Hall_Of_Fame"))
 );
 
-
-//добавлена автомиграция 
 using (var scope = builder.Services.BuildServiceProvider().CreateScope())
 {
     try
@@ -71,6 +69,7 @@ using (var scope = builder.Services.BuildServiceProvider().CreateScope())
     }
 }
 
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -83,3 +82,4 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
+public partial class Program { }

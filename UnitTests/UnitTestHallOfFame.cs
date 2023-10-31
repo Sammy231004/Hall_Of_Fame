@@ -1,18 +1,16 @@
-﻿using Xunit;
-using Moq;
-using Hall_Of_Fame.Services;
+﻿using Hall_Of_Fame.DTO;
 using Hall_Of_Fame.Entities;
-using Hall_Of_Fame.DTO;
-using Hall_Of_Fame.Interface;
-using Microsoft.Extensions.Logging;
+using Hall_Of_Fame.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Security.Cryptography.X509Certificates;
+using Microsoft.Extensions.Logging;
+using Moq;
+using Xunit;
 
 public class PersonServiceTests
 {
+
+
+
     [Fact]
     public async Task CreatePerson_ReturnsPersonResponse()
     {
@@ -69,7 +67,7 @@ public class PersonServiceTests
                 new Skills { Name = "fireball", Level = 5 },
             }
         }
-    };
+            };
 
         personRepositoryMock.Setup(repo => repo.GetPeople())
             .ReturnsAsync(persons);
@@ -81,7 +79,7 @@ public class PersonServiceTests
 
         var personResponses = result.Value as List<PersonResponseDto>;
         Assert.NotNull(personResponses);
-      
+
 
 
 
@@ -90,8 +88,8 @@ public class PersonServiceTests
     public async Task DeletePeopleById_ReturnsPersonResponse()
     {
         var personRepositoryMock = new Mock<IPersonRepository>();
-        var loggerMock = new Mock<ILogger<PersonService>>();    
-        var personService = new PersonService(personRepositoryMock.Object,loggerMock.Object);
+        var loggerMock = new Mock<ILogger<PersonService>>();
+        var personService = new PersonService(personRepositoryMock.Object, loggerMock.Object);
         long personID = 2;
     }
 
@@ -102,7 +100,7 @@ public class PersonServiceTests
         var loggerMock = new Mock<ILogger<PersonService>>();
         var personService = new PersonService(personRepositoryMock.Object, loggerMock.Object);
 
-        var personId = 1; 
+        var personId = 1;
 
         personRepositoryMock.Setup(repo => repo.GetPersonById(personId))
             .ReturnsAsync((Person)null);
@@ -118,7 +116,7 @@ public class PersonServiceTests
         var loggerMock = new Mock<ILogger<PersonService>>();
         var personService = new PersonService(personRepositoryMock.Object, loggerMock.Object);
 
-        var personId = 1; 
+        var personId = 1;
         var updatePersonRequest = new UpdatePersonRequestDto
         {
             Id = personId,
@@ -132,5 +130,5 @@ public class PersonServiceTests
         var actionResult = await personService.UpdatePerson(personId, updatePersonRequest);
         Assert.IsType<NotFoundResult>(actionResult);
     }
-
 }
+

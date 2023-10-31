@@ -8386,9 +8386,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Hall_Of_Fame-main\\UnitTests\\Tests.csproj",
-      "projectName": "Tests",
-      "projectPath": "D:\\Hall_Of_Fame-main\\UnitTests\\Tests.csproj",
+      "projectUniqueName": "D:\\Hall_Of_Fame-main\\UnitTests\\Hall_of_fame.csproj",
+      "projectName": "Hall_of_fame",
+      "projectPath": "D:\\Hall_Of_Fame-main\\UnitTests\\Hall_of_fame.csproj",
       "packagesPath": "C:\\Users\\SavinykhVN\\.nuget\\packages\\",
       "outputPath": "D:\\Hall_Of_Fame-main\\UnitTests\\obj\\",
       "projectStyle": "PackageReference",
