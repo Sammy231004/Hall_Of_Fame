@@ -19,6 +19,7 @@ public class PersonServiceTests
         var loggerMock = new Mock<ILogger<PersonService>>();
         var personService = new PersonService(personRepositoryMock.Object, loggerMock.Object);
         var personRequest = new CreatePersonRequestDto
+        
         {
             Name = "Vitalik",
             DisplayName = "Savinih",
